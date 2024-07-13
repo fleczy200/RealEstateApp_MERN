@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userName  String   @unique
+  password  String
+  email     String   @unique
+  avatar    String?
+  createdAt DateTime @default(now())
+}
+
+// post{
+//   id String pk
+//   userId String
+//   title String
+//   price Int
+//   images String[]
+//   address String
+//   city String
+//   bedroom Int
+//   bathroom Int
+//   longitude String
+//   latitude String
+//   type String
+//   property String 
+//   createdAt Date
+// }
+
+// postDetail{
+//   id String pk
+//   postId String
+//   desc String
+//   utilities String
+//   pet String
+//   income String
+//   size Int
+//   school Int
+//   bus Int
+//   restaurant Int
+//   createdAt Date
+// }
+// savedPost{
+//   id String pk
+//   userId String
+//   postId String
+//   createdAt Date
+// }
+// chat{
+//   id String pk
+//   userIDs String[]
+//   seenBy String[]
+//   lastMessage String
+//   createdAt Date
+// }
+
+// message{
+//   id String pk
+//   userId String
+//   chatId String
+//   text String
+//   createdAt Date
+// }
+
+// user.id < post.userId
+// post.id - postDetail.postId
+// user.id < savedPost.userId
+// post.id < savedPost.postId
+// user.id < chat.userIDs
+// chat.id < message.chatId
