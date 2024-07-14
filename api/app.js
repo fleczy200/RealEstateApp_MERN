@@ -19,6 +19,7 @@ app.use("/api/posts",postRoute)
 app.use("/api/auth",authRoute)
 app.use("/api/test",testsRoute)
 app.use("/api/users",userRoute)
+//app.user("/api/post",postRoute)
 
 
 
